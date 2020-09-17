@@ -1,0 +1,331 @@
+*********************************************************************************
+********1. Install the packages: Server will be lion, all other (5 nodes) will be client including lion
+********1.1   o From Server (lion):
+*********************************************************************************
+
+[training@lion:~$ yum -y install krb5-server krb5-libs krb5-auth-dialog krb5-workstation
+Loaded plugins: fastestmirror
+You need to be root to perform this command.
+training@lion:~$ sudo -i
+[root@lion ~]# yum -y install krb5-server krb5-libs krb5-auth-dialog krb5-workstation
+Loaded plugins: fastestmirror
+Setting up Install Process
+Loading mirror speeds from cached hostfile
+ * base: d36uatko69830t.cloudfront.net
+ * extras: d36uatko69830t.cloudfront.net
+ * updates: d36uatko69830t.cloudfront.net
+base                                                                      | 3.7 kB     00:00     
+base/primary_db                                                           | 4.7 MB     00:00     
+epel                                                                      | 4.7 kB     00:00     
+epel/primary_db                                                           | 6.1 MB     00:00     
+extras                                                                    | 3.4 kB     00:00     
+extras/primary_db                                                         |  29 kB     00:00     
+updates                                                                   | 3.4 kB     00:00     
+updates/primary_db                                                        |  11 MB     00:00     
+Resolving Dependencies
+--> Running transaction check
+---> Package krb5-auth-dialog.x86_64 0:0.13-6.el6 will be installed
+---> Package krb5-libs.x86_64 0:1.10.3-57.el6 will be updated
+--> Processing Dependency: libkadm5clnt_mit.so.8()(64bit) for package: krb5-devel-1.10.3-57.el6.x86_64
+--> Processing Dependency: libkadm5clnt_mit.so.8()(64bit) for package: krb5-workstation-1.10.3-65.el6.x86_64
+--> Processing Dependency: libkadm5clnt_mit.so.8()(64bit) for package: krb5-server-1.10.3-65.el6.x86_64
+--> Processing Dependency: libkadm5clnt_mit.so.8(kadm5clnt_mit_8_MIT)(64bit) for package: krb5-workstation-1.10.3-65.el6.x86_64
+--> Processing Dependency: libkadm5clnt_mit.so.8(kadm5clnt_mit_8_MIT)(64bit) for package: krb5-server-1.10.3-65.el6.x86_64
+--> Processing Dependency: libkadm5srv_mit.so.8()(64bit) for package: krb5-devel-1.10.3-57.el6.x86_64
+--> Processing Dependency: libkadm5srv_mit.so.8()(64bit) for package: krb5-workstation-1.10.3-65.el6.x86_64
+--> Processing Dependency: libkadm5srv_mit.so.8()(64bit) for package: krb5-server-1.10.3-65.el6.x86_64
+--> Processing Dependency: libkadm5srv_mit.so.8(kadm5srv_mit_8_MIT)(64bit) for package: krb5-workstation-1.10.3-65.el6.x86_64
+--> Processing Dependency: libkadm5srv_mit.so.8(kadm5srv_mit_8_MIT)(64bit) for package: krb5-server-1.10.3-65.el6.x86_64
+--> Processing Dependency: krb5-libs = 1.10.3-57.el6 for package: krb5-devel-1.10.3-57.el6.x86_64
+---> Package krb5-libs.x86_64 0:1.10.3-65.el6 will be an update
+---> Package krb5-server.x86_64 0:1.10.3-65.el6 will be installed
+base/filelists_db                                                         | 6.4 MB     00:00     
+epel/filelists_db                                                         | 7.9 MB     00:00     
+extras/filelists_db                                                       |  24 kB     00:00     
+updates/filelists_db                                                      | 7.9 MB     00:00     
+---> Package krb5-workstation.x86_64 0:1.10.3-65.el6 will be installed
+--> Running transaction check
+---> Package krb5-devel.x86_64 0:1.10.3-57.el6 will be updated
+---> Package krb5-devel.x86_64 0:1.10.3-65.el6 will be an update
+---> Package libkadm5.x86_64 0:1.10.3-65.el6 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=================================================================================================
+ Package                     Arch              Version                     Repository       Size
+=================================================================================================
+Installing:
+ krb5-auth-dialog            x86_64            0.13-6.el6                  base            211 k
+ krb5-server                 x86_64            1.10.3-65.el6               base            2.0 M
+ krb5-workstation            x86_64            1.10.3-65.el6               base            814 k
+Updating:
+ krb5-libs                   x86_64            1.10.3-65.el6               base            675 k
+Installing for dependencies:
+ libkadm5                    x86_64            1.10.3-65.el6               base            143 k
+Updating for dependencies:
+ krb5-devel                  x86_64            1.10.3-65.el6               base            504 k
+
+Transaction Summary
+=================================================================================================
+Install       4 Package(s)
+Upgrade       2 Package(s)
+
+Total download size: 4.3 M
+Downloading Packages:
+(1/6): krb5-auth-dialog-0.13-6.el6.x86_64.rpm                             | 211 kB     00:00     
+(2/6): krb5-devel-1.10.3-65.el6.x86_64.rpm                                | 504 kB     00:00     
+(3/6): krb5-libs-1.10.3-65.el6.x86_64.rpm                                 | 675 kB     00:00     
+(4/6): krb5-server-1.10.3-65.el6.x86_64.rpm                               | 2.0 MB     00:00     
+(5/6): krb5-workstation-1.10.3-65.el6.x86_64.rpm                          | 814 kB     00:00     
+(6/6): libkadm5-1.10.3-65.el6.x86_64.rpm                                  | 143 kB     00:00     
+-------------------------------------------------------------------------------------------------
+Total                                                             19 MB/s | 4.3 MB     00:00     
+Running rpm_check_debug
+Running Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Updating   : krb5-libs-1.10.3-65.el6.x86_64                                                1/8 
+  Installing : libkadm5-1.10.3-65.el6.x86_64                                                 2/8 
+  Updating   : krb5-devel-1.10.3-65.el6.x86_64                                               3/8 
+  Installing : krb5-server-1.10.3-65.el6.x86_64                                              4/8 
+  Installing : krb5-workstation-1.10.3-65.el6.x86_64                                         5/8 
+  Installing : krb5-auth-dialog-0.13-6.el6.x86_64                                            6/8 
+  Cleanup    : krb5-devel-1.10.3-57.el6.x86_64                                               7/8 
+  Cleanup    : krb5-libs-1.10.3-57.el6.x86_64                                                8/8 
+  Verifying  : krb5-devel-1.10.3-65.el6.x86_64                                               1/8 
+  Verifying  : libkadm5-1.10.3-65.el6.x86_64                                                 2/8 
+  Verifying  : krb5-server-1.10.3-65.el6.x86_64                                              3/8 
+  Verifying  : krb5-libs-1.10.3-65.el6.x86_64                                                4/8 
+  Verifying  : krb5-auth-dialog-0.13-6.el6.x86_64                                            5/8 
+  Verifying  : krb5-workstation-1.10.3-65.el6.x86_64                                         6/8 
+  Verifying  : krb5-libs-1.10.3-57.el6.x86_64                                                7/8 
+  Verifying  : krb5-devel-1.10.3-57.el6.x86_64                                               8/8 
+
+Installed:
+  krb5-auth-dialog.x86_64 0:0.13-6.el6              krb5-server.x86_64 0:1.10.3-65.el6          
+  krb5-workstation.x86_64 0:1.10.3-65.el6          
+
+Dependency Installed:
+  libkadm5.x86_64 0:1.10.3-65.el6                                                                
+
+Updated:
+  krb5-libs.x86_64 0:1.10.3-65.el6                                                               
+
+Dependency Updated:
+  krb5-devel.x86_64 0:1.10.3-65.el6                                                              
+
+Complete!
+
+*********************************************************************************
+********1.2  o From Clients (all 5 nodes):
+*********************************************************************************
+
+[root@lion ~]# yum -y install krb5-workstation krb5-libs krb5-auth-dialog
+Loaded plugins: fastestmirror
+Setting up Install Process
+Loading mirror speeds from cached hostfile
+ * base: d36uatko69830t.cloudfront.net
+ * extras: d36uatko69830t.cloudfront.net
+ * updates: d36uatko69830t.cloudfront.net
+Package krb5-workstation-1.10.3-65.el6.x86_64 already installed and latest version
+Package krb5-libs-1.10.3-65.el6.x86_64 already installed and latest version
+Package krb5-auth-dialog-0.13-6.el6.x86_64 already installed and latest version
+Nothing to do
+
+
+[root@elephant ~]# yum -y install krb5-workstation krb5-libs krb5-auth-dialog
+Loaded plugins: fastestmirror
+Setting up Install Process
+Loading mirror speeds from cached hostfile
+ * base: d36uatko69830t.cloudfront.net
+ * extras: d36uatko69830t.cloudfront.net
+ * updates: d36uatko69830t.cloudfront.net
+base                                                                      | 3.7 kB     00:00     
+base/primary_db                                                           | 4.7 MB     00:00     
+epel                                                                      | 4.7 kB     00:00     
+epel/primary_db                                                           | 6.1 MB     00:00     
+extras                                                                    | 3.4 kB     00:00     
+extras/primary_db                                                         |  29 kB     00:00     
+updates                                                                   | 3.4 kB     00:00     
+updates/primary_db                                                        |  11 MB     00:00     
+Resolving Dependencies
+--> Running transaction check
+---> Package krb5-auth-dialog.x86_64 0:0.13-6.el6 will be installed
+---> Package krb5-libs.x86_64 0:1.10.3-57.el6 will be updated
+--> Processing Dependency: libkadm5clnt_mit.so.8()(64bit) for package: krb5-devel-1.10.3-57.el6.x86_64
+--> Processing Dependency: libkadm5clnt_mit.so.8()(64bit) for package: krb5-workstation-1.10.3-65.el6.x86_64
+--> Processing Dependency: libkadm5clnt_mit.so.8(kadm5clnt_mit_8_MIT)(64bit) for package: krb5-workstation-1.10.3-65.el6.x86_64
+--> Processing Dependency: libkadm5srv_mit.so.8()(64bit) for package: krb5-devel-1.10.3-57.el6.x86_64
+--> Processing Dependency: libkadm5srv_mit.so.8()(64bit) for package: krb5-workstation-1.10.3-65.el6.x86_64
+--> Processing Dependency: libkadm5srv_mit.so.8(kadm5srv_mit_8_MIT)(64bit) for package: krb5-workstation-1.10.3-65.el6.x86_64
+--> Processing Dependency: krb5-libs = 1.10.3-57.el6 for package: krb5-devel-1.10.3-57.el6.x86_64
+---> Package krb5-libs.x86_64 0:1.10.3-65.el6 will be an update
+---> Package krb5-workstation.x86_64 0:1.10.3-65.el6 will be installed
+--> Running transaction check
+---> Package krb5-devel.x86_64 0:1.10.3-57.el6 will be updated
+---> Package krb5-devel.x86_64 0:1.10.3-65.el6 will be an update
+---> Package libkadm5.x86_64 0:1.10.3-65.el6 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=================================================================================================
+ Package                     Arch              Version                     Repository       Size
+=================================================================================================
+Installing:
+ krb5-auth-dialog            x86_64            0.13-6.el6                  base            211 k
+ krb5-workstation            x86_64            1.10.3-65.el6               base            814 k
+Updating:
+ krb5-libs                   x86_64            1.10.3-65.el6               base            675 k
+Installing for dependencies:
+ libkadm5                    x86_64            1.10.3-65.el6               base            143 k
+Updating for dependencies:
+ krb5-devel                  x86_64            1.10.3-65.el6               base            504 k
+
+Transaction Summary
+=================================================================================================
+Install       3 Package(s)
+Upgrade       2 Package(s)
+
+Total download size: 2.3 M
+Downloading Packages:
+(1/5): krb5-auth-dialog-0.13-6.el6.x86_64.rpm                             | 211 kB     00:00     
+(2/5): krb5-devel-1.10.3-65.el6.x86_64.rpm                                | 504 kB     00:00     
+(3/5): krb5-libs-1.10.3-65.el6.x86_64.rpm                                 | 675 kB     00:00     
+(4/5): krb5-workstation-1.10.3-65.el6.x86_64.rpm                          | 814 kB     00:00     
+(5/5): libkadm5-1.10.3-65.el6.x86_64.rpm                                  | 143 kB     00:00     
+-------------------------------------------------------------------------------------------------
+Total                                                             15 MB/s | 2.3 MB     00:00     
+Running rpm_check_debug
+Running Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Updating   : krb5-libs-1.10.3-65.el6.x86_64                                                1/7 
+  Installing : libkadm5-1.10.3-65.el6.x86_64                                                 2/7 
+  Updating   : krb5-devel-1.10.3-65.el6.x86_64                                               3/7 
+  Installing : krb5-workstation-1.10.3-65.el6.x86_64                                         4/7 
+  Installing : krb5-auth-dialog-0.13-6.el6.x86_64                                            5/7 
+  Cleanup    : krb5-devel-1.10.3-57.el6.x86_64                                               6/7 
+  Cleanup    : krb5-libs-1.10.3-57.el6.x86_64                                                7/7 
+  Verifying  : krb5-devel-1.10.3-65.el6.x86_64                                               1/7 
+  Verifying  : libkadm5-1.10.3-65.el6.x86_64                                                 2/7 
+  Verifying  : krb5-libs-1.10.3-65.el6.x86_64                                                3/7 
+  Verifying  : krb5-auth-dialog-0.13-6.el6.x86_64                                            4/7 
+  Verifying  : krb5-workstation-1.10.3-65.el6.x86_64                                         5/7 
+  Verifying  : krb5-libs-1.10.3-57.el6.x86_64                                                6/7 
+  Verifying  : krb5-devel-1.10.3-57.el6.x86_64                                               7/7 
+
+Installed:
+  krb5-auth-dialog.x86_64 0:0.13-6.el6          krb5-workstation.x86_64 0:1.10.3-65.el6         
+
+Dependency Installed:
+  libkadm5.x86_64 0:1.10.3-65.el6                                                                
+
+Updated:
+  krb5-libs.x86_64 0:1.10.3-65.el6                                                               
+
+Dependency Updated:
+  krb5-devel.x86_64 0:1.10.3-65.el6                                                              
+
+Complete!
+
+============>tiger/horse/monkey 동일 수행
+
+*********************************************************************************
+********2 lion /var/kerberos/krb5kdc/kdc.conf
+*********************************************************************************
+
+[root@lion etc]# vi /var/kerberos/krb5kdc/kdc.conf
+
+[kdcdefaults]
+ kdc_ports = 88
+ kdc_tcp_ports = 88
+
+[realms]
+ HSK.COM = {
+  #master_key_type = aes256-cts
+  acl_file = /var/kerberos/krb5kdc/kadm5.acl
+  dict_file = /usr/share/dict/words
+  admin_keytab = /var/kerberos/krb5kdc/kadm5.keytab
+  supported_enctypes = aes256-cts:normal aes128-cts:normal des3-hmac-sha1:normal arcfour-hmac:normal des-hmac-sha1:normal des-cbc-md5:normal des-cbc-crc:normal
+  max_life = 1d
+  max_renewable_life = 7d
+ }
+
+*********************************************************************************
+********3 elephant/tiger/horse/monkey/lion /etc/krb5.conf
+*********************************************************************************
+
+[logging]
+ default = FILE:/var/log/krb5libs.log
+ kdc = FILE:/var/log/krb5kdc.log
+ admin_server = FILE:/var/log/kadmind.log
+
+[libdefaults]
+ default_realm = HSK.COM
+ dns_lookup_realm = false
+ dns_lookup_kdc = false
+ ticket_lifetime = 24h
+ renew_lifetime = 7d
+ forwardable = true
+
+[realms]
+ HSK.COM = {
+  kdc = lion.hsk.com
+  admin_server = lion.hsk.com
+ }
+
+[domain_realm]
+ .hsk.com = HSK.COM
+ hsk.com = HSK.COM
+
+
+*********************************************************************************
+********4 Test the kadmin super user (admin) that we just created
+*********************************************************************************
+
+[root@lion etc]# kadmin -p admin/admin@HSK.COM
+Authenticating as principal admin/admin@HSK.COM with password.
+Password for admin/admin@HSK.COM: 
+kadmin:  ?
+Available kadmin requests:
+
+add_principal, addprinc, ank
+                         Add principal
+delete_principal, delprinc
+                         Delete principal
+modify_principal, modprinc
+                         Modify principal
+rename_principal, renprinc
+                         Rename principal
+change_password, cpw     Change password
+get_principal, getprinc  Get principal
+list_principals, listprincs, get_principals, getprincs
+                         List principals
+add_policy, addpol       Add policy
+modify_policy, modpol    Modify policy
+delete_policy, delpol    Delete policy
+get_policy, getpol       Get policy
+list_policies, listpols, get_policies, getpols
+                         List policies
+get_privs, getprivs      Get privileges
+ktadd, xst               Add entry(s) to a keytab
+ktremove, ktrem          Remove entry(s) from a keytab
+--More--
+
+*********************************************************************************
+********5 Use Cloudera Manager Wizard to Kerberize
+*********************************************************************************
+
+http://lion:7180/cmf/login
+
+===============>여기서 아래의 오류 발생하여 이후 진행은 못했습니다.
+
+The proxy server is refusing connections
+
+Firefox is configured to use a proxy server that is refusing connections.
+
+    Check the proxy settings to make sure that they are correct.
+    Contact your network administrator to make sure the proxy server is working.
+    Consider using fast and reliable proxy servers from FoxyProxy. (Hint: Please disable your current proxy if you get this error page while trying to load FoxyProxy's proxy service website)
